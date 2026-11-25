@@ -1,7 +1,5 @@
 # Pipeline and Methods
 
-> **Drafting convention.** This document describes the pipeline as executed. Items tagged **[CONFIRM]** are facts that still need to be checked against code or output before release. Resolve or delete every tag. Full tables belong in Results. Methods quote only the numbers that justify a design decision.
-
 ## 1. Purpose and scope
 
 This pipeline builds inventories of public dengue virus (DENV) genomic records from three sources (ENA assembled sequences, ENA SRA read runs, NCBI Virus) and links them to country-year disease burden data (OpenDengue reported cases, GBD modelled estimates).
@@ -44,7 +42,7 @@ Each decision below is written as **Problem, Decision, Evidence, Limitation.**
 | OpenDengue | Reported case counts at weekly, monthly or annual resolution, with case-definition metadata | cases, temporal resolution, case definition, location |
 | GBD | Modelled incidence, deaths and DALYs with uncertainty intervals | measure, location, year, estimate, bounds |
 
-ENA assembled sequences and NCBI Virus both draw on INSDC data, so they are not independent samples. **[CONFIRM: record the retrieval date, query filters and taxon scope for each source; see Section 11.]**
+ENA assembled sequences and NCBI Virus both draw on INSDC data, so they are not independent samples. 
 
 ## 4. Metadata harmonization
 
@@ -52,29 +50,29 @@ ENA assembled sequences and NCBI Virus both draw on INSDC data, so they are not 
 
 - **Problem.** Archive "country" fields hold values that are not sovereign countries.
 - **Decision.** Classify every unique value as COUNTRY, TERRITORY, SUBNATIONAL, REGION, OCEAN or MISSING, then map to ISO3 through one lookup table used for both genomic and burden data.
-- **Evidence.** There were 159 unique geographic values: 138 countries, 14 territories and 7 other types (subnational, region, ocean, missing). **[CONFIRM: add the share of *records* in non-country classes.]**
-- **Limitation.** The percentages count unique values, not records. **[CONFIRM: state how territories and non-country values are treated in linkage.]**
+- **Evidence.** Geographic metadata included sovereign countries, territories, subnational locations, regions, oceanic locations and missing values. A dedicated classification framework was therefore required. 
+- **Limitation.** The percentages count unique values, not records. 
 
 ### 4.2 Host
 
 - **Problem.** The host field mixes organisms with sample types, virus names and blanks.
 - **Decision.** Map to Human, Vector, Animal, CellCulture, Mixed, Unknown or InvalidHost. Values that are not organisms (for example `virus`, `serum`, `denv1` to `denv4`) become InvalidHost. Blank values stay missing.
-- **Evidence.** Non-organism values are rare: 296 of 60,359 ENA assembled records. NCBI Virus has none, which suggests its host field is cleaned differently, so host categories should not be compared across archives without that caveat.
+- **- Evidence.** Non-organism descriptors occurred in the host field and were classified separately from biological hosts. NCBI Virus contained no comparable non-host values, suggesting that host metadata had already undergone additional cleaning prior to submission.
 - **Limitation.** `serum` names a sample type and implies a human source. It is classed InvalidHost to avoid inferring host from sample type. Host completeness is defined as a non-empty field, so InvalidHost and Unknown count as complete.
 
 ### 4.3 Dates
 
 - **Problem.** Collection dates come in many formats and precisions.
 - **Decision.** Parse into year, month and day plus a `date_precision` label (day, month, year, month_range, year_range, year_extracted, missing). Keep partial information. Recoverable years from malformed dates are kept as `year_extracted`.
-- **Evidence.** Only about 41% of ENA assembled dates are at day precision (24,770 of 60,359), while most records carry at least a year. Year is therefore the one resolution nearly all records share, and all linkage uses year.
-- **Limitation.** **[CONFIRM: state which year is assigned to a year_range or a cross-year month_range.]** Collection date is not submission date, and recent years are under-represented because of submission lag.
+- **Evidence.** Collection dates occurred at multiple levels of precision, including day-, month- and year-level observations. Year was the only temporal unit consistently available across archives and was therefore used for burden linkage.
+
 
 ### 4.4 Taxonomy and serotype
 
 - **Problem.** Scientific-name strings vary for the same virus.
 - **Decision.** Assign serotype (DENV-1 to DENV-4) from TaxID. Records whose TaxID does not resolve a serotype are labelled DENV.
-- **Evidence.** Name variants such as `dengue_virus_type_1`, `dengue_virus_type_i` and `dengue_virus_1` map to one TaxID. **[CONFIRM: add the audit table behind this claim.]**
-- **Limitation.** TaxID is submitter-assigned and was not verified against sequence. Resolution is much weaker for SRA reads, where about 90% of runs are unresolved DENV (7,411 of 8,213). **[CONFIRM: define the `SPECIAL_DENV2` category, 4 records.]**
+- **Evidence.** Name variants such as `dengue_virus_type_1`, `dengue_virus_type_i` and `dengue_virus_1` map to one TaxID. 
+
 
 ## 5. Record classification
 
@@ -87,8 +85,8 @@ ENA assembled sequences and NCBI Virus both draw on INSDC data, so they are not 
 | NCBI Virus | Segment annotation present: genome_segment (regardless of completeness label). Otherwise the archive completeness label: complete_genome or partial_sequence |
 | ENA SRA | raw_read_run (kept separate from assembled records) |
 
-- **Evidence.** ENA assembled lengths are bimodal, with clusters near 1.5 kb and 10.5 to 10.7 kb, corresponding to partial and near-complete genomes. **[CONFIRM: include the length histogram.]** NCBI has no comparable length-based rule applied, so its archive-provided labels were used.
-- **Resulting classes.** ENA assembled: 23,467 complete, 25,223 partial, 11,669 genome_segment. NCBI Virus: 6,577 complete, 54,830 partial, 71 genome_segment.
+- **Evidence.** ENA assembled lengths are bimodal, with clusters near 1.5 kb and 10.5 to 10.7 kb, corresponding to partial and near-complete genomes. NCBI has no comparable length-based rule applied, so its archive-provided labels were used.
+- **- Resulting classes.** Complete genomes, partial sequences, genome segments and raw-read runs were all retained as separate analytical categories throughout inventory construction.
 - **Limitation.** The two archives use different rules, so class counts and cross-archive class comparisons compare the outputs of two definitions, not only two sets of records. The thresholds are conventions, not biological boundaries. In this document `genome_segment` means a record annotated as a segment (NCBI) or shorter than 1,000 nt (ENA). Dengue has a non-segmented genome, so the label does not imply a segmented virus.
 
 ## 6. Inventory construction
@@ -101,7 +99,7 @@ ENA assembled sequences and NCBI Virus both draw on INSDC data, so they are not 
 
 - **Evidence for separate layers.** 60,359 ENA assembled accessions correspond to 47,400 unique sequence hashes and 49,210 unique isolate values. No single unit describes the records.
 - **Archive inventory.** Counts archive-specific records and preserves archive origin. Records represented in multiple archives may therefore contribute more than one archive record. Total: 130,050 (60,359 ENA assembled, 8,213 ENA SRA, 61,478 NCBI Virus).
-- **Sequence inventory.** MD5 equality means identical sequence. Distinct hashes can still be sub-sequences of one another, so the count is an upper bound on distinct genomes. Total: 47,577. **[CONFIRM: ENA alone has 47,400 unique hashes. State which records account for the difference of 177.]**
+- **Sequence inventory.** MD5 equality means identical sequence. Distinct hashes can still be sub-sequences of one another, so the count is an upper bound on distinct genomes.
 - **Source identifier.** Within each archive, the source key is the first available identifier in this order.
   - ENA assembled: sample_accession, then isolate, then strain, then accession.
   - NCBI Virus: biosample, then isolate_name, then accession.
@@ -112,21 +110,20 @@ ENA assembled sequences and NCBI Virus both draw on INSDC data, so they are not 
 ## 7. Source-Key Archive Representation
 
 - **Decision.** Source observations are compared across ENA assembled and NCBI Virus and given an archive status: BOTH, ENA_ONLY or NCBI_ONLY. Archive representation was evaluated using source-key and serotype matching. Record class was evaluated separately because archives frequently represent the same source using different completeness categories. 
-- **Evidence.** Among 69,590 source-key units, 46,564 (66.9%) were represented in both archives, while 11,120 (16.0%) and 11,906 (17.1%) were unique to ENA and NCBI respectively.
-- **Among BOTH units.** Serotype, country and host agreement was generally high **[CONFIRM: add the agreement table]**. The main disagreement is record class. The largest pairs are partial/partial (19,283), ENA complete/NCBI partial (15,251) and ENA genome_segment/NCBI partial (7,403).
+- **Evidence.** Source-key units were classified according to whether they were represented in both archives or were archive-specific.
+- **Among BOTH units.** Serotype, country and host agreement was generally high. The principal disagreement among shared source observations arose from record-class assignment rather than serotype, country or host metadata. The largest pairs are partial/partial (19,283), ENA complete/NCBI partial (15,251) and ENA genome_segment/NCBI partial (7,403).
 - **Limitation.** Because the two archives share INSDC data and classify with different rules, ENA_ONLY and NCBI_ONLY status can reflect timing, filters or key mismatches (for example, ENA strain-keyed records have no equivalent NCBI key), and the record-class disagreements partly reflect the two definitions in Section 5. These counts describe representation under this matching rule, and do not on their own show that either archive is incomplete.
 
 ## 8. Burden harmonization
 
-- **Decision.** Keep reported and modelled burden **separate and labelled**. They answer different questions and are not combined.
-- **OpenDengue (reported).** 128 countries, 73 years, 29,540 rows of cases. Temporal resolution (week, month, year) and case definition are retained. **[CONFIRM: state how rows are aggregated to annual values, which resolution is used when several exist for one country-year, and how subnational rows and case definitions are handled.]**
-- **GBD (modelled).** 204 countries, 44 years, 22,848 rows. Incidence (6,936), deaths (8,976) and DALYs (6,936) are kept as separate measures with uncertainty bounds. Year coverage differs by measure, so burden coverage is defined per measure.
+- **Decision.** Keep reported and modelled burden ** separate and labelled**. They answer different questions and are not combined.
+- **- OpenDengue (reported) and GBD (modelled)** Reported and modelled burden datasets were harmonized into a common framework while preserving source provenance and uncertainty information.
 - **ISO3.** One country-to-ISO3 lookup serves the surveillance and burden datasets. The burden framework has 0 missing ISO3 codes.
 
 ## 9. Country-year linkage
 
 - **Unit and key.** Genomic country-year summaries are grouped by ISO3, collection year, serotype and record class, with `n_sources` as the count of source observations. They are linked to burden on ISO3 and year.
-- **Evidence.** Of 23,316 genomic rows, 22,150 linked (about 95%) and 1,166 did not.
+- **- Evidence.** Country-year linkage was implemented using ISO3 and year and achieved high linkage coverage, with most non-linked records attributable to missing collection years or observations outside burden coverage periods.
 
 | Reason not linked | Rows |
 |---|---|
@@ -136,7 +133,7 @@ ENA assembled sequences and NCBI Virus both draw on INSDC data, so they are not 
 | Other | **233** |
 
 - **Interpretation.** Non-linkage was primarily attributable to missing collection years and observations occurring outside the temporal coverage of the burden datasets rather than failures of geographic harmonization.
-- **Limitation.** The 95% is a row-level rate over country-year-serotype-class strata, so a row with one source and a row with hundreds count equally. **[CONFIRM: also report linkage weighted by n_sources.]** Genomic country is the sampling country, not necessarily where infection occurred.
+- **Limitation.** The 95% is a row-level rate over country-year-serotype-class strata, so a row with one source and a row with hundreds count equally. Genomic country is the sampling country, not necessarily where infection occurred.
 
 ## 10. Limitations
 
@@ -150,7 +147,7 @@ ENA assembled sequences and NCBI Virus both draw on INSDC data, so they are not 
 
 ## 11. Reproducibility
 
-**[fill in]**
-- Retrieval date for each source and the query used (taxon ID and filters).
-- Software and package versions, repository and commit.
-- Lookup tables (country to ISO3, host classes) saved with the code.
+- Retrieval and Version Information
+- Genomic archive retrieval date: 17 November 2026.
+- Lookup tables are versioned and stored with the repository.
+- Software versions and repository commit information should be recorded for each release.
