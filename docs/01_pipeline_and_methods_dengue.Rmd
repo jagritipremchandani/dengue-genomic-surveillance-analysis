@@ -57,7 +57,7 @@ ENA assembled sequences and NCBI Virus both draw on INSDC data, so they are not 
 
 - **Problem.** The host field mixes organisms with sample types, virus names and blanks.
 - **Decision.** Map to Human, Vector, Animal, CellCulture, Mixed, Unknown or InvalidHost. Values that are not organisms (for example `virus`, `serum`, `denv1` to `denv4`) become InvalidHost. Blank values stay missing.
-- **- Evidence.** Non-organism descriptors occurred in the host field and were classified separately from biological hosts. NCBI Virus contained no comparable non-host values, suggesting that host metadata had already undergone additional cleaning prior to submission.
+- ** Evidence.** Non-organism descriptors occurred in the host field and were classified separately from biological hosts. NCBI Virus contained no comparable non-host values, suggesting that host metadata had already undergone additional cleaning prior to submission.
 - **Limitation.** `serum` names a sample type and implies a human source. It is classed InvalidHost to avoid inferring host from sample type. Host completeness is defined as a non-empty field, so InvalidHost and Unknown count as complete.
 
 ### 4.3 Dates
@@ -98,7 +98,7 @@ ENA assembled sequences and NCBI Virus both draw on INSDC data, so they are not 
 | Source | source_key + serotype + record_class | How many distinct source observations? | How many infections or patients |
 
 - **Evidence for separate layers.** 60,359 ENA assembled accessions correspond to 47,400 unique sequence hashes and 49,210 unique isolate values. No single unit describes the records.
-- **Archive inventory.** Counts archive-specific records and preserves archive origin. Records represented in multiple archives may therefore contribute more than one archive record. Total: 130,050 (60,359 ENA assembled, 8,213 ENA SRA, 61,478 NCBI Virus).
+- **Archive inventory.** Counts archive-specific records and preserves archive origin. Records represented in multiple archives may therefore contribute more than one archive record. 
 - **Sequence inventory.** MD5 equality means identical sequence. Distinct hashes can still be sub-sequences of one another, so the count is an upper bound on distinct genomes.
 - **Source identifier.** Within each archive, the source key is the first available identifier in this order.
   - ENA assembled: sample_accession, then isolate, then strain, then accession.
@@ -106,10 +106,12 @@ ENA assembled sequences and NCBI Virus both draw on INSDC data, so they are not 
   - ENA SRA is excluded from the source inventory and kept separate.
 - Source identifiers are constructed independently of record class. Source inventory records are subsequently defined by the combination of source identifier, serotype and record class. Total: 93,826.
 - **Limitation.** Isolate names are labels and are not guaranteed to be unique biological sources, so source observations are source-key units, not infections or patients. Isolate was the key for most records (49,375 of 60,359 ENA and 57,052 of 61,478 NCBI), and only ENA has a strain fallback.
+- Source-key archive representation is evaluated at the source-key level, whereas source inventory records are defined using source_key, serotype and record_class combinations. Consequently, source inventory counts are expected to exceed source-key representation counts.
 
 ## 7. Source-Key Archive Representation
 
-- **Decision.** Source observations are compared across ENA assembled and NCBI Virus and given an archive status: BOTH, ENA_ONLY or NCBI_ONLY. Archive representation was evaluated using source-key and serotype matching. Record class was evaluated separately because archives frequently represent the same source using different completeness categories. 
+- **Decision.** Source-key units are evaluated for archive representation and classified as BOTH, ENA_ONLY, or NCBI_ONLY.
+Archive representation was evaluated using source-key and serotype matching. Record class was evaluated separately because archives frequently represent the same source using different completeness categories. 
 - **Evidence.** Source-key units were classified according to whether they were represented in both archives or were archive-specific.
 - **Among BOTH units.** Serotype, country and host agreement was generally high. The principal disagreement among shared source observations arose from record-class assignment rather than serotype, country or host metadata. The largest pairs are partial/partial (19,283), ENA complete/NCBI partial (15,251) and ENA genome_segment/NCBI partial (7,403).
 - **Limitation.** Because the two archives share INSDC data and classify with different rules, ENA_ONLY and NCBI_ONLY status can reflect timing, filters or key mismatches (for example, ENA strain-keyed records have no equivalent NCBI key), and the record-class disagreements partly reflect the two definitions in Section 5. These counts describe representation under this matching rule, and do not on their own show that either archive is incomplete.
