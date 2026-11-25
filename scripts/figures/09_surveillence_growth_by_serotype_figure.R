@@ -567,7 +567,7 @@ create_serotype_figure <- function(
     
     file = out_html,
     
-    selfcontained = TRUE
+    selfcontained = FALSE
     
   )
   
