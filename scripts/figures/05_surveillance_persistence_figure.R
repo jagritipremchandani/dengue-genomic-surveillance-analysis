@@ -285,7 +285,7 @@ p <- plot_ly(
 saveWidget(
   p,
   file = out_html,
-  selfcontained = TRUE
+  selfcontained = FALSE
 )
 
 
