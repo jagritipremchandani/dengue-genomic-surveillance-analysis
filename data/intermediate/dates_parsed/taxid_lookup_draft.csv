@@ -1,0 +1,12 @@
+taxid,scientific_name,ENA_SEQ,ENA_SRA,NCBI_VIRUS,serotype,taxon_level,accepted
+11053,dengue_virus_type_1,TRUE,TRUE,TRUE,NA,NA,YES
+11053,dengue_virus_type_i,FALSE,FALSE,TRUE,NA,NA,YES
+11053,dengue_virus_1,FALSE,FALSE,TRUE,NA,NA,YES
+11060,dengue_virus_type_2,TRUE,TRUE,TRUE,NA,NA,YES
+11060,dengue_virus_2,FALSE,FALSE,TRUE,NA,NA,YES
+11069,dengue_virus_type_3,TRUE,TRUE,TRUE,NA,NA,YES
+11070,dengue_virus_type_4,TRUE,TRUE,TRUE,NA,NA,YES
+11070,dengue_virus_4,FALSE,FALSE,TRUE,NA,NA,YES
+12637,dengue_virus,TRUE,TRUE,TRUE,NA,NA,YES
+31634,dengue_virus_2_thailand/16681/84,TRUE,FALSE,TRUE,NA,NA,YES
+31635,dengue_virus_2_16681-pdk53,FALSE,TRUE,FALSE,NA,NA,YES

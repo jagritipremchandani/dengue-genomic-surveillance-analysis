@@ -1,0 +1,143 @@
+iso3,country,years_represented,first_year,last_year
+IND,India,54,1956,2025
+THA,Thailand,54,1960,2024
+COL,Colombia,42,1944,2024
+MYS,Malaysia,41,1905,2024
+PYF,French Polynesia,39,1971,2025
+BRA,Brazil,38,1982,2025
+USA,United States,38,1944,2026
+IDN,Indonesia,37,1905,2026
+PHL,Philippines,34,1956,2024
+CHN,China,33,1978,2025
+LKA,Sri Lanka,33,1978,2025
+VNM,Viet Nam,30,1987,2026
+PRI,Puerto Rico,29,1953,2023
+SGP,Singapore,28,1990,2023
+MEX,Mexico,27,1983,2024
+VEN,Venezuela,27,1987,2024
+PER,Peru,26,1990,2025
+TWN,Taiwan,26,1981,2023
+MMR,Myanmar,25,1973,2024
+NCL,New Caledonia,25,1971,2020
+KHM,Cambodia,24,1999,2024
+GUF,French Guiana,23,1993,2024
+AUS,Australia,22,1983,2025
+NIC,Nicaragua,22,1994,2022
+PAN,Panama,22,1994,2024
+CUB,Cuba,21,1981,2024
+PRY,Paraguay,21,2001,2025
+BGD,Bangladesh,18,2001,2025
+LAO,Lao People's Democratic Republic,18,2007,2024
+PAK,Pakistan,18,1994,2025
+SEN,Senegal,18,1953,2024
+CRI,Costa Rica,16,1994,2024
+DOM,Dominican Republic,16,1989,2024
+FIN,Finland,16,2000,2018
+REU,Reunion,16,2004,2025
+JPN,Japan,15,2007,2023
+KEN,Kenya,15,2011,2026
+BOL,Bolivia,14,1997,2024
+ECU,Ecuador,14,1988,2024
+FJI,Fiji,14,1971,2018
+SAU,Saudi Arabia,14,1994,2024
+TLS,Timor-Leste,14,2000,2015
+HTI,Haiti,13,1994,2023
+MTQ,Martinique,13,1989,2024
+PNG,Papua New Guinea,13,1944,2016
+FRA,France,12,2008,2026
+GLP,Guadeloupe,12,2000,2024
+HND,Honduras,12,1984,2024
+PRT,Portugal,12,2012,2024
+GAB,Gabon,11,2007,2021
+SLB,Solomon Islands,11,2002,2025
+TTO,Trinidad And Tobago,11,1978,2014
+BFA,Burkina Faso,10,1980,2024
+BRB,Barbados,10,1995,2024
+CIV,Cote D'ivoire,10,1980,2024
+CMR,Cameroon,10,2005,2024
+GTM,Guatemala,10,1989,2024
+JAM,Jamaica,10,1977,2020
+SLV,El Salvador,10,1987,2022
+TZA,United Republic Of Tanzania,9,2010,2025
+ITA,Italy,8,2009,2025
+KOR,Republic Of Korea,8,2004,2015
+MDV,Maldives,8,2011,2026
+NGA,Nigeria,8,1966,2024
+AGO,Angola,7,1988,2024
+DJI,Djibouti,7,1999,2020
+ESP,Spain,7,2008,2024
+GHA,Ghana,7,2005,2024
+COK,Cook Islands,6,1991,2014
+GRD,Grenada,6,1977,2010
+NPL,Nepal,6,2010,2023
+SOM,Somalia,6,1993,2023
+VUT,Vanuatu,6,2010,2020
+WLF,Wallis And Futuna,6,1989,2019
+ARG,Argentina,5,2009,2024
+BLZ,Belize,5,1998,2010
+BTN,Bhutan,5,2013,2022
+COD,Democratic Republic Of The Congo,5,2015,2024
+COM,Comoros,5,1993,2026
+ETH,Ethiopia,5,2015,2023
+GUY,Guyana,5,2000,2008
+RUS,Russian Federation,5,2012,2024
+SYC,Seychelles,5,2004,2024
+TGO,Togo,5,2009,2024
+WSM,Samoa,5,1972,2015
+BEN,Benin,4,2016,2023
+BRN,Brunei Darussalam,4,2005,2016
+CPV,Cabo Verde,4,2008,2024
+DMA,Dominica,4,1981,2013
+FSM,Micronesia (Federated States Of),4,1995,2012
+MLI,Mali,4,2017,2024
+MOZ,Mozambique,4,1985,2019
+MRT,Mauritania,4,2014,2018
+SUR,Suriname,4,1981,2010
+TON,Tonga,4,1974,2015
+URY,Uruguay,4,2012,2023
+VIR,Virgin Islands,4,1987,2005
+ERI,Eritrea,3,2010,2017
+IRL,Ireland,3,2010,2012
+IRN,Iran (Islamic Republic Of),3,2009,2015
+LCA,Saint Lucia,3,2001,2020
+MAF,Saint Martin,3,2018,2023
+MDG,Madagascar,3,2005,2010
+MYT,Mayotte,3,2012,2019
+VCT,Saint Vincent And The Grenadines,3,2002,2012
+ABW,Aruba,2,1999,2004
+ASM,American Samoa,2,1972,2017
+BLM,Saint Barthelemy,2,2016,2023
+CAF,Central African Republic,2,2024,2026
+CHE,Switzerland,2,2023,2026
+CHL,Chile,2,2002,2009
+DEU,Germany,2,2002,2013
+GIN,Guinea,2,1981,2024
+HRV,Croatia,2,2007,2010
+ISR,Israel,2,2022,2024
+KIR,Kiribati,2,1980,2012
+KNA,Saint Kitts And Nevis,2,2001,2008
+MHL,Marshall Islands,2,2003,2011
+NER,Niger,2,2019,2022
+NIU,Niue,2,1980,2012
+NRU,Nauru,2,1974,2014
+OMN,Oman,2,2022,2023
+PLW,Palau,2,1988,2000
+SDN,Sudan,2,2019,2024
+VGB,British Virgin Islands,2,1985,2008
+YEM,Yemen,2,2010,2016
+AIA,Anguilla,1,2001,2001
+ARE,United Arab Emirates,1,2023,2023
+ATG,Antigua And Barbuda,1,2001,2001
+BEL,Belgium,1,2026,2026
+BHS,Bahamas,1,1977,1977
+COG,Republic Of The Congo,1,2016,2016
+EGY,Egypt,1,2017,2017
+GMB,Gambia,1,2010,2010
+GNQ,Equatorial Guinea,1,2019,2019
+GUM,Guam,1,2001,2001
+QAT,Qatar,1,2024,2024
+STP,Sao Tome And Principe,1,2022,2022
+SWE,Sweden,1,1990,1990
+TUV,Tuvalu,1,2014,2014
+UGA,Uganda,1,2017,2017
+ZAF,South Africa,1,2017,2017

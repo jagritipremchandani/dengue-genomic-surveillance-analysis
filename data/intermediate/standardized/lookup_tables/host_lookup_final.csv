@@ -1,0 +1,105 @@
+host_raw,host_standardized,host_group
+acute_febrile_human,Homo sapiens,Human
+ae.,Aedes sp.,Vector
+aedes,Aedes sp.,Vector
+aedes_aegypti,Aedes aegypti,Vector
+aedes_aegypti_larvae,Aedes aegypti larvae,Vector
+aedes_aegypti_mosquito,Aedes aegypti mosquito,Vector
+aedes_aegypti_mosquitoes,Aedes aegypti mosquitoes,Vector
+aedes_aegytpti_mosquito,Aedes aegytpti mosquito,Vector
+aedes_africanus,Aedes africanus,Vector
+aedes_albopictus,Aedes albopictus,Vector
+aedes_luteocephalus,Aedes luteocephalus,Vector
+aedes_niveus,Aedes niveus,Vector
+aedes_sp.,Aedes sp.,Vector
+aedes_taylori,Aedes taylori,Vector
+african_green_monkey,African green monkey,Animal
+arthropod,Arthropod,Vector
+arthropoda,Arthropoda,Animal
+artibeus_jamaicensis,Artibeus jamaicensis,Animal
+artibeus_phaeotis,Artibeus phaeotis,Animal
+bat,Bat,Animal
+bei_strain,NA,InvalidHost
+bhk-21_cells,BHK-21 cells,CellCulture
+c6-36,C6/36 cells,CellCulture
+c6/36_cells,C6/36 cells,CellCulture
+callithrix_penicillata,Callithrix penicillata,Animal
+canis_familiaris,Canis familiaris,Animal
+canis_lupus_familiaris,Canis lupus familiaris,Animal
+carollia_perspicillata,Carollia perspicillata,Animal
+cber_strain,NA,InvalidHost
+chironomus_thummi,Chironomus thummi,Animal
+chiroptera,Chiroptera,Animal
+chlorocebus_aethiops,Chlorocebus aethiops,Animal
+chlorocebus_sabaeus,Chlorocebus sabaeus,Animal
+culex,Culex sp.,Vector
+culex_erraticus,Culex erraticus,Vector
+culex_iolambdis,Culex iolambdis,Vector
+culex_quinquefasciatus,Culex quinquefasciatus,Vector
+culex_sp.,Culex sp.,Vector
+culex_watti,Culex watti,Vector
+culicidae,Culicidae,Vector
+culicidae:_culex,Culex sp.,Vector
+culicine_mosquito,Culicine mosquito,Vector
+cx.,Culex sp.,Vector
+dengue,NA,InvalidHost
+dengue_fever_patient,Homo sapiens,Human
+denv1,NA,InvalidHost
+denv2,NA,InvalidHost
+denv3,NA,InvalidHost
+denv4,NA,InvalidHost
+dermanura_phaeotis,Dermanura phaeotis,Animal
+didelphis_marsupialis,Didelphis marsupialis,Animal
+field_aedes_albopictus,Field aedes albopictus,Animal
+gadfly,Gadfly,Vector
+glossophaga_mutica,Glossophaga mutica,Animal
+glossophaga_soricina,Glossophaga soricina,Animal
+hamster,Hamster,Animal
+home_sapiens:_female,Homo sapiens,Human
+home_sapiens:_male,Homo sapiens,Human
+homo-sapiens,Homo sapiens,Human
+homo_sapien,Homo sapiens,Human
+homo_sapience,Homo sapiens,Human
+homo_sapiens,Homo sapiens,Human
+homo_sapiens_and_aedes_aegypti,Mixed human/vector,Mixed
+homo_sapiens_homo_sapiens,Homo sapiens,Human
+homo_sapiense,Homo sapiens,Human
+homo_sapines,Homo sapiens,Human
+human,Homo sapiens,Human
+in_vitro,In vitro culture,CellCulture
+macaca_fascicularis,Macaca fascicularis,Animal
+macaca_nemestrina,Macaca nemestrina,Animal
+mansonia_titillans,Mansonia titillans,Animal
+marmosa_murina,Marmosa murina,Animal
+medium_vero_infected_cells,Vero cells,CellCulture
+melanoconion,Melanoconion,Animal
+mice,Mice,Animal
+midge,Midge,Vector
+molossus_nigricans,Molossus nigricans,Animal
+molossus_pretiosus,Molossus pretiosus,Animal
+molossus_rufus,Molossus rufus,Animal
+molossus_sinaloae,Molossus sinaloae,Animal
+monkey,Monkey,Animal
+mosquito,Mosquito,Vector
+mosquito_suspension,Mosquito,Vector
+mosquitoe,Mosquito,Vector
+mosquitoes,Mosquito,Vector
+mouse,Mouse,Animal
+mus_musculus,Mus musculus,Animal
+oryzomys_sp.,Oryzomys sp.,Animal
+phyllostomus_discolor,Phyllostomus discolor,Animal
+platyrrhinus_helleri,Platyrrhinus helleri,Animal
+proechimys_cuvieri,Proechimys cuvieri,Animal
+pythium_insidiosum,Pythium insidiosum,Animal
+rhogeessa_tumida,Rhogeessa tumida,Animal
+sentinel_monkey,Sentinel monkey,Animal
+serum,NA,InvalidHost
+simiiformes,Simiiformes,Animal
+sturnira_parvidens,Sturnira parvidens,Animal
+supernatants_of_c6/36_cells,C6/36 cells,CellCulture
+trachypithecus_cristatus,Trachypithecus cristatus,Animal
+tupaia_glis,Tupaia glis,Animal
+unknown,NA,Unknown
+vero_81_cells,Vero cells,CellCulture
+vero_cell,Vero cells,CellCulture
+virus,NA,InvalidHost

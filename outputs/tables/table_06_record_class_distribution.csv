@@ -1,0 +1,8 @@
+source,record_class,records
+ENA SRA,raw_read_run,8213
+ENA Sequence,complete_genome,23467
+ENA Sequence,genome_segment,11669
+ENA Sequence,partial_sequence,25223
+NCBI Virus,complete_genome,6577
+NCBI Virus,genome_segment,71
+NCBI Virus,partial_sequence,54830

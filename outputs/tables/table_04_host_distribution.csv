@@ -1,0 +1,9 @@
+host_group,ENA Sequence,ENA SRA,NCBI Virus
+Animal,101,12,106
+CellCulture,77,25,0
+Human,49876,4565,52509
+InvalidHost,296,19,0
+Mixed,4,0,0
+Unknown,20,0,0
+Vector,1045,199,1117
+NA,8940,3393,7746

@@ -1,0 +1,4 @@
+inventory,counting_unit,count
+Archive Inventory,accession/run_accession,130050
+Sequence Inventory,sequence_md5,47577
+Source Inventory,source_key + serotype + record_class,93826

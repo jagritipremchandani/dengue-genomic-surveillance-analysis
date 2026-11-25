@@ -1,0 +1,160 @@
+country_raw,country_standardized,location_type
+505_[nicaragua],Nicaragua,COUNTRY
+american_samoa,American Samoa,TERRITORY
+angola,Angola,COUNTRY
+anguilla,Anguilla,COUNTRY
+antigua_and_barbuda,Antigua And Barbuda,COUNTRY
+argentina,Argentina,COUNTRY
+aruba,Aruba,COUNTRY
+atlantic_ocean,NA,OCEAN
+australia,Australia,COUNTRY
+bahamas,Bahamas,COUNTRY
+bangladesh,Bangladesh,COUNTRY
+barbados,Barbados,COUNTRY
+belgium,Belgium,COUNTRY
+belize,Belize,COUNTRY
+benin,Benin,COUNTRY
+bhutan,Bhutan,COUNTRY
+bolivia,Bolivia,COUNTRY
+borneo,NA,REGION
+brazil,Brazil,COUNTRY
+british_virgin_islands,British Virgin Islands,COUNTRY
+brunei,Brunei Darussalam,COUNTRY
+burkina_faso,Burkina Faso,COUNTRY
+cambodia,Cambodia,COUNTRY
+cameroon,Cameroon,COUNTRY
+cape_verde,Cabo Verde,COUNTRY
+central_african_republic,Central African Republic,COUNTRY
+chile,Chile,COUNTRY
+china,China,COUNTRY
+colombia,Colombia,COUNTRY
+comoros,Comoros,COUNTRY
+cook_islands,Cook Islands,COUNTRY
+costa_rica,Costa Rica,COUNTRY
+cote_d'ivoire,Cote D'ivoire,COUNTRY
+croatia,Croatia,COUNTRY
+cuba,Cuba,COUNTRY
+democratic_republic_of_the_congo,Democratic Republic Of The Congo,COUNTRY
+djibouti,Djibouti,COUNTRY
+dominica,Dominica,COUNTRY
+dominican_republic,Dominican Republic,COUNTRY
+east_timor,Timor-Leste,COUNTRY
+ecuador,Ecuador,COUNTRY
+egypt,Egypt,COUNTRY
+el_salvador,El Salvador,COUNTRY
+equatorial_guinea,Equatorial Guinea,COUNTRY
+eritrea,Eritrea,COUNTRY
+ethiopia,Ethiopia,COUNTRY
+fiji,Fiji,COUNTRY
+finland,Finland,COUNTRY
+france,France,COUNTRY
+france_guadeloupe,Guadeloupe,TERRITORY
+france_martinique,Martinique,TERRITORY
+french_guiana,French Guiana,TERRITORY
+french_polynesia,French Polynesia,COUNTRY
+gabon,Gabon,COUNTRY
+gambia,Gambia,COUNTRY
+germany,Germany,COUNTRY
+ghana,Ghana,COUNTRY
+grenada,Grenada,COUNTRY
+guadeloupe,Guadeloupe,TERRITORY
+guam,Guam,TERRITORY
+guatemala,Guatemala,COUNTRY
+guinea,Guinea,COUNTRY
+guyana,Guyana,COUNTRY
+haiti,Haiti,COUNTRY
+honduras,Honduras,COUNTRY
+hungary,Hungary,COUNTRY
+india,India,COUNTRY
+indonesia,Indonesia,COUNTRY
+iran,Iran (Islamic Republic Of),COUNTRY
+ireland,Ireland,COUNTRY
+israel,Israel,COUNTRY
+italy,Italy,COUNTRY
+jamaica,Jamaica,COUNTRY
+japan,Japan,COUNTRY
+kenya,Kenya,COUNTRY
+kiribati,Kiribati,COUNTRY
+laos,Lao People's Democratic Republic,COUNTRY
+madagascar,Madagascar,COUNTRY
+malaysia,Malaysia,COUNTRY
+maldives,Maldives,COUNTRY
+mali,Mali,COUNTRY
+marshall_islands,Marshall Islands,COUNTRY
+martinique,Martinique,TERRITORY
+mauritania,Mauritania,COUNTRY
+mayotte,Mayotte,TERRITORY
+mexico,Mexico,COUNTRY
+micronesia,Micronesia (Federated States Of),COUNTRY
+missing,NA,MISSING
+montserrat,Montserrat,COUNTRY
+morocco,Morocco,COUNTRY
+mozambique,Mozambique,COUNTRY
+myanmar,Myanmar,COUNTRY
+nauru,Nauru,COUNTRY
+nepal,Nepal,COUNTRY
+netherlands,Netherlands,COUNTRY
+netherlands_antilles,Netherlands Antilles,COUNTRY
+new_caledonia,New Caledonia,TERRITORY
+new_delhi,India,SUBNATIONAL
+new_delhi_india,India,SUBNATIONAL
+nicaragua,Nicaragua,COUNTRY
+niger,Niger,COUNTRY
+nigeria,Nigeria,COUNTRY
+niue,Niue,COUNTRY
+not_collected,NA,MISSING
+oman,Oman,COUNTRY
+pacific_ocean,NA,OCEAN
+pakistan,Pakistan,COUNTRY
+palau,Palau,COUNTRY
+panama,Panama,COUNTRY
+papua_new_guinea,Papua New Guinea,COUNTRY
+paraguay,Paraguay,COUNTRY
+peru,Peru,COUNTRY
+philippines,Philippines,COUNTRY
+portugal,Portugal,COUNTRY
+puerto_rico,Puerto Rico,TERRITORY
+qatar,Qatar,COUNTRY
+republic_of_the_congo,Republic Of The Congo,COUNTRY
+reunion,Reunion,TERRITORY
+russia,Russian Federation,COUNTRY
+saint_barthelemy,Saint Barthelemy,TERRITORY
+saint_kitts_and_nevis,Saint Kitts And Nevis,COUNTRY
+saint_lucia,Saint Lucia,COUNTRY
+saint_martin,Saint Martin,TERRITORY
+saint_vincent_and_the_grenadines,Saint Vincent And The Grenadines,COUNTRY
+samoa,Samoa,COUNTRY
+sao_tome_and_principe,Sao Tome And Principe,COUNTRY
+saudi_arabia,Saudi Arabia,COUNTRY
+senegal,Senegal,COUNTRY
+seychelles,Seychelles,COUNTRY
+singapore,Singapore,COUNTRY
+solomon_islands,Solomon Islands,COUNTRY
+somalia,Somalia,COUNTRY
+south_africa,South Africa,COUNTRY
+south_korea,Republic Of Korea,COUNTRY
+spain,Spain,COUNTRY
+sri_lanka,Sri Lanka,COUNTRY
+sudan,Sudan,COUNTRY
+suriname,Suriname,COUNTRY
+sweden,Sweden,COUNTRY
+switzerland,Switzerland,COUNTRY
+taiwan,Taiwan,COUNTRY
+tanzania,United Republic Of Tanzania,COUNTRY
+thailand,Thailand,COUNTRY
+thailand_thailand,Thailand,COUNTRY
+timor-leste,Timor-Leste,COUNTRY
+togo,Togo,COUNTRY
+tonga,Tonga,COUNTRY
+trinidad_and_tobago,Trinidad And Tobago,COUNTRY
+tuvalu,Tuvalu,COUNTRY
+uganda,Uganda,COUNTRY
+united_arab_emirates,United Arab Emirates,COUNTRY
+uruguay,Uruguay,COUNTRY
+usa,United States,COUNTRY
+vanuatu,Vanuatu,COUNTRY
+venezuela,Venezuela,COUNTRY
+viet_nam,Viet Nam,COUNTRY
+virgin_islands,Virgin Islands,COUNTRY
+wallis_and_futuna,Wallis And Futuna,TERRITORY
+yemen,Yemen,COUNTRY

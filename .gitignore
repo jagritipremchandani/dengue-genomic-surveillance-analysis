@@ -1,0 +1,47 @@
+# R history and session files
+.Rhistory
+.Rapp.history
+.RData
+.RDataTmp
+.Ruserdata
+
+# R package build / check / cache / temp files
+*-Ex.R
+/*.tar.gz
+/*.Rcheck/
+.Rproj.user/
+*.Rproj
+!/auditing_dengue.Rproj
+vignettes/*.html
+vignettes/*.pdf
+*_cache/
+/cache/
+*.utf8.md
+*.knit.md
+po/*~
+rsconnect/
+src/*.o
+src/*.so
+src/*.dll
+
+# Secrets and tokens
+.httr-oauth
+.Renviron
+.env
+
+# Large raw data & archives (keep data/raw/ ignored; data/intermediate/ is tracked)
+data/raw/
+*.rds
+*.rdata
+*.zip
+
+# Local scratch / old files
+archive/
+
+# OS & Windows shortcut files
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.lnk
+
+.git_old_backup/

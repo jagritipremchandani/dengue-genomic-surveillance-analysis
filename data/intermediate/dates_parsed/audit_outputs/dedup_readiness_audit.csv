@@ -1,0 +1,4 @@
+dataset,records,biosample_available,bioproject_available,isolate_available,strain_available
+ENA_SEQ,60359,2202,6006,51554,8990
+ENA_SRA,8213,8213,5175,4098,1528
+NCBI_VIRUS,61478,2301,6116,59353,NA

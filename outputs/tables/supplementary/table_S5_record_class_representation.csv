@@ -1,0 +1,9 @@
+record_class_ena,record_class_ncbi,source_units,pct
+partial_sequence,partial_sequence,19283,41.41
+complete_genome,partial_sequence,15251,32.75
+genome_segment,partial_sequence,7403,15.9
+complete_genome,complete_genome,4450,9.56
+partial_sequence,complete_genome,125,0.27
+genome_segment,genome_segment,31,0.07
+partial_sequence,genome_segment,13,0.03
+genome_segment,complete_genome,8,0.02

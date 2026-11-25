@@ -1,0 +1,4 @@
+archive,records,country_missing,host_missing,date_missing,country_completeness_pct,host_completeness_pct,date_completeness_pct
+ENA Sequence,60359,3337,8940,6088,94.5,85.2,89.9
+ENA SRA,8213,3502,3393,3219,57.4,58.7,60.8
+NCBI Virus,61478,3143,7746,5807,94.9,87.4,90.6

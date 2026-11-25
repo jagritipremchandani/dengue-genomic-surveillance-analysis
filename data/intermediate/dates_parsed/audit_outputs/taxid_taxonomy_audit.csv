@@ -1,0 +1,12 @@
+taxid,scientific_name,records,archives
+11053,dengue_virus_1,2,NCBI_VIRUS
+11053,dengue_virus_type_1,41558,ENA_SEQ;ENA_SRA;NCBI_VIRUS
+11053,dengue_virus_type_i,2766,NCBI_VIRUS
+11060,dengue_virus_2,291,NCBI_VIRUS
+11060,dengue_virus_type_2,39990,ENA_SEQ;ENA_SRA;NCBI_VIRUS
+11069,dengue_virus_type_3,19683,ENA_SEQ;ENA_SRA;NCBI_VIRUS
+11070,dengue_virus_4,3,NCBI_VIRUS
+11070,dengue_virus_type_4,9509,ENA_SEQ;ENA_SRA;NCBI_VIRUS
+12637,dengue_virus,16244,ENA_SEQ;ENA_SRA;NCBI_VIRUS
+31634,dengue_virus_2_thailand/16681/84,2,ENA_SEQ;NCBI_VIRUS
+31635,dengue_virus_2_16681-pdk53,2,ENA_SRA
