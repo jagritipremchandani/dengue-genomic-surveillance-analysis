@@ -17,17 +17,11 @@
 # deduplication and inventory construction.
 # ==========================================================
 
-library(dplyr)
-library(readr)
-library(stringr)
+# install.packages("here")
+library(here)
 
-#=========================================================
-# PATHS
-#=========================================================
-
-input_folder <- "data/intermediate/dates_parsed"
-
-output_folder<- "data/intermediate/classified_ready"
+input_folder  <- here("data", "intermediate", "dates_parsed")
+output_folder <- here("data", "intermediate", "classified_ready")
 
 dir.create(
   output_folder,
@@ -376,10 +370,10 @@ cat("CLASSIFICATION SUMMARY\n")
 cat("====================================\n")
 
 cat("\nENA SEQ\n")
-print(table(ena_seq$record_class))
+print(table(ena$record_class))
 
 cat("\nENA READ RUNS\n")
-print(table(ena_readruns$record_class))
+print(table(runs$record_class))
 
 cat("\nNCBI VIRUS\n")
 print(table(ncbi$record_class))
@@ -390,8 +384,8 @@ print(
   sort(
     table(
       c(
-        ena_seq$serotype,
-        ena_readruns$serotype,
+        ena$serotype,
+        runs$serotype,
         ncbi$serotype
       )
     ),
