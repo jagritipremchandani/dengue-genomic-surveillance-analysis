@@ -1,8 +1,14 @@
 library(tidyverse)
-library(ggplot2)
 library(plotly)
 library(htmlwidgets)
 
+pick_col <- function(data, candidates) {
+  hit <- intersect(candidates, names(data))
+  if (length(hit) == 0) {
+    return(rep(NA_character_, nrow(data)))
+  }
+  as.character(data[[hit[1]]])
+}
 
 project_dir <- "outputs"
 
@@ -12,7 +18,8 @@ csv_path <- file.path(
   "repository_representation.csv"
 )
 
-out_dir <- file.path(project_dir,"figures", "dengue")
+out_dir <- file.path(project_dir, "figures", "dengue")
+dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 
 out_html <- file.path(out_dir, "figure_06_repository_representation.html")
 out_png  <- file.path(out_dir, "figure_06_repository_representation.png")
@@ -151,7 +158,7 @@ interactive_plot <- ggplotly(p, tooltip = "text") %>%
 saveWidget(
   widget = interactive_plot,
   file = out_html,
-  selfcontained = TRUE
+  selfcontained = FALSE
 )
 
 html_uri <- paste0("file:///", gsub("\\\\", "/", normalizePath(out_html, mustWork = FALSE)))
