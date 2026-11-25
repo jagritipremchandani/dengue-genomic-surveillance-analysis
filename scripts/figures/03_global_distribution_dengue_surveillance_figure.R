@@ -149,7 +149,7 @@ p <- plot_ly(
   ) %>%
   config(displaylogo = FALSE)
 
-saveWidget(p, file = out_html, selfcontained = TRUE)
+saveWidget(p, file = out_html, selfcontained = FALSE)
 
 find_chromium_browser <- function() {
   env_chrome <- Sys.getenv("CHROMOTE_CHROME", unset = "")
