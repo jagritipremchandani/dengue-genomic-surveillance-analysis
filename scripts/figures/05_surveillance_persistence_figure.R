@@ -1,4 +1,3 @@
-
 # ============================================================
 # FIGURE 02: GLOBAL PERSISTENCE OF DENGUE GENOMIC SURVEILLANCE
 # Reproducible HTML + PNG export
@@ -64,25 +63,31 @@ out_dir <- file.path(
   "dengue"
 )
 
-out_html <- file.path(
-  out_dir,
-  "figure_02_surveillance_persistence.html"
-)
-
-out_png <- file.path(
-  out_dir,
-  "figure_02_surveillance_persistence.png"
-)
-
-if (!file.exists(csv_path)) {
-  stop("Input CSV not found: ", csv_path)
-}
-
 dir.create(
   out_dir,
   recursive = TRUE,
   showWarnings = FALSE
 )
+
+out_html <- normalizePath(
+  file.path(
+    out_dir,
+    "figure_02_surveillance_persistence.html"
+  ),
+  mustWork = FALSE
+)
+
+out_png <- normalizePath(
+  file.path(
+    out_dir,
+    "figure_02_surveillance_persistence.png"
+  ),
+  mustWork = FALSE
+)
+
+if (!file.exists(csv_path)) {
+  stop("Input CSV not found: ", csv_path)
+}
 
 
 # 3. READ AND VALIDATE DATA -----------------------------------
@@ -433,4 +438,6 @@ message("\nFigure 02 successfully generated.")
 message("Interactive HTML: ", out_html)
 message("Static PNG: ", out_png)
 
-browseURL(out_html)
+if (interactive() && file.exists(out_html)) {
+  browseURL(out_html)
+}
