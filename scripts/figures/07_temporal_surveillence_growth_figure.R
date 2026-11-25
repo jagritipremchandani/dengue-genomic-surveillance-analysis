@@ -1,4 +1,3 @@
-
 library(tidyverse)
 library(ggplot2)
 library(plotly)
@@ -18,6 +17,11 @@ out_dir <- file.path(
   "dengue"
 )
 
+dir.create(
+  out_dir,
+  recursive = TRUE,
+  showWarnings = FALSE
+)
 
 out_html <- file.path(
   out_dir,
@@ -254,7 +258,7 @@ interactive_plot <- ggplotly(
 saveWidget(
   widget = interactive_plot,
   file = out_html,
-  selfcontained = TRUE
+  selfcontained = FALSE
 )
 
 # ----------------------------------------------------------
