@@ -6,14 +6,14 @@
 # ==========================================================
 
 library(tidyverse)
-
+source_dir<- "data/intermediate/inventories"
 inventory_dir <- "data/processed"
 
 lookup_dir <- "data/intermediate/lookup_tables"
 
 source_inventory <- read_csv(
   file.path(
-    inventory_dir,
+    source_dir,
     "source_inventory.csv"
   ),
   show_col_types = FALSE
