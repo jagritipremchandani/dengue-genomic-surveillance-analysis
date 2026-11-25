@@ -4,64 +4,16 @@ library(ggplot2)
 library(plotly)
 library(htmlwidgets)
 
-get_project_root <- function() {
-  script_path <- NULL
-  
-  if (requireNamespace("rstudioapi", quietly = TRUE) &&
-      rstudioapi::isAvailable()) {
-    ctx <- tryCatch(
-      rstudioapi::getActiveDocumentContext(),
-      error = function(e) NULL
-    )
-    
-    if (!is.null(ctx) && nzchar(ctx$path)) {
-      script_path <- ctx$path
-    }
-  }
-  
-  if (is.null(script_path)) {
-    args <- commandArgs(trailingOnly = FALSE)
-    file_arg <- grep("^--file=", args, value = TRUE)
-    
-    if (length(file_arg) > 0) {
-      script_path <- sub("^--file=", "", file_arg[1])
-    }
-  }
-  
-  if (!is.null(script_path) && nzchar(script_path)) {
-    script_dir <- dirname(normalizePath(
-      script_path,
-      mustWork = FALSE
-    ))
-    
-    if (basename(script_dir) == "scripts") {
-      return(dirname(script_dir))
-    }
-    
-    return(script_dir)
-  }
-  
-  wd <- normalizePath(getwd(), mustWork = FALSE)
-  
-  if (basename(wd) == "scripts") {
-    return(dirname(wd))
-  }
-  
-  wd
-}
-
-project_dir <- get_project_root()
+project_dir <- "outputs"
 
 csv_path <- file.path(
   project_dir,
-  "outputs",
   "figure_csvs",
   "temporal_surveillance_growth.csv"
 )
 
 out_dir <- file.path(
   project_dir,
-  "outputs",
   "figures",
   "dengue"
 )
