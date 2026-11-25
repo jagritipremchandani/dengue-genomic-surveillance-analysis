@@ -1,40 +1,111 @@
 # Dengue Genomic Surveillance Inventory Framework
 
-A reproducible R framework for building dengue genomic surveillance inventories from public sequence archives and linking them to country-year disease burden.
-
 **Author:** Jagriti Premchandani
+**Status:** v1 baseline
+
 ---
 
-## Overview
+## 1. Project overview
 
-The workflow harmonizes metadata from:
+This repository contains a reproducible framework for constructing pathogen genomic surveillance inventories from public genomic archives and integrating them with country-year disease burden datasets.
 
-- ENA Sequence records
-- ENA SRA read runs
-- NCBI Virus
-- OpenDengue surveillance data (**reported** burden)
-- Global Burden of Disease (GBD) estimates (**modelled** burden)
+| | Pathogen |
+|---|---|
+| **Current implementation** | Dengue virus |
+| **Planned** | Lassa virus, *Klebsiella pneumoniae* |
 
-and produces archive-level, sequence-level, source-level and country-year analytical datasets.
+## 2. Repository purpose
 
-**Current pathogen:** dengue virus. **Planned:** Lassa virus, *Klebsiella pneumoniae*.
+The repository is designed to:
 
-## Data retrieval date
+- Harmonize metadata
+- Classify genomic records
+- Construct multiple surveillance inventories
+- Harmonize burden datasets
+- Create country-year analytical datasets
 
-Genomic archive retrievals (ENA Sequence, ENA SRA, NCBI Virus) correspond to the archive state available on **17 November 2026**. Archive contents change continuously, so counts reported here will differ from later pulls.
+The framework does **not** estimate infections, patients or transmission events. Genomic records reflect sequencing and submission effort, not disease occurrence.
 
-## Key findings
+## 3. Workflow summary
 
-- 93,826 source-level dengue genomic observations were identified.
-- Archive, sequence and source inventories give substantially different counts, so no single deduplicated total adequately describes genomic surveillance.
-- Surveillance is geographically widespread but highly uneven, with strongest representation in South Asia, Southeast Asia and Latin America.
-- Approximately two-thirds of source-level observations were represented in both ENA and NCBI; about one-third were archive-specific. <!-- VERIFY: see note on 66.9% vs 46,564 -->
-- ISO-harmonized country-year linkage achieved approximately 95% coverage.
-- Positive ecological associations were observed between genomic surveillance representation and dengue burden across country-years (Figure 5; rank correlation ρ = 0.55 for cases, 0.50 for incidence, 0.43 for deaths, 0.46 for DALYs; P < 0.001). These are descriptive associations and do not indicate that burden drives surveillance effort or the reverse.
+```
+Genomic Archives
+      ↓
+Metadata Harmonization
+      ↓
+Taxonomy & Classification
+      ↓
+Inventory Construction
+      ↓
+Country-Year Aggregation (genomic)
 
-## Inventory units
 
-The project deliberately keeps distinct counting units:
+Burden Sources
+      ↓
+Burden Harmonization
+      ↓
+Country-Year Aggregation (burden)
+
+
+Genomic Country-Year
+          +
+Burden Country-Year
+      ↓
+Pathogen Country-Year
+```
+
+## 4. Data inputs
+
+**Retrieved automatically by pipeline scripts**
+
+- ENA Sequence Records
+- ENA SRA Read Runs
+- NCBI Virus Records
+
+**Retrieved manually**
+
+- OpenDengue (**reported** surveillance counts)
+- Global Burden of Disease, GBD (**modelled** estimates)
+
+The two burden sources are kept separate and are not interchangeable.
+
+Raw source data are not redistributed. The sources have independent licensing and update policies, so this repository distributes code and processed outputs only. Check each source's terms before reuse, in particular GBD/IHME.
+
+## 5. Directory structure
+
+```
+README.md
+docs/
+scripts/
+data/
+outputs/
+```
+
+## 6. Script groups
+
+Scripts are numbered and run sequentially.
+
+| Scripts | Stage |
+|---|---|
+| 01–06 | Metadata processing |
+| 07–09 | Inventory construction |
+| 10–13 | Burden harmonization |
+| 14–16 | Country-year integration |
+
+## 7. Outputs
+
+**Inventories**
+
+- Archive Inventory
+- Sequence Inventory
+- Source Inventory
+
+**Burden products**
+
+- Burden Master
+- Burden Country-Year
+
+**The project deliberately keeps distinct counting units:**
 
 | Inventory | Counting unit |
 |---|---|
@@ -43,84 +114,36 @@ The project deliberately keeps distinct counting units:
 | **Source inventory (final)** | `source_key` + `serotype` + `record_class` |
 | Country-year analysis | `ISO3` + `Year` |
 
-The source inventory is the primary unit for headline counts.
+**Analytical products**
 
-### Two overlap constructs (not interchangeable)
+| Output | Unit | Description | Scripts |
+|---|---|---|---|
+| Genomic Country-Year | `ISO3` + `Year` | Genomic surveillance records from the source inventory aggregated to country and year. Describes where and when dengue genomes were deposited, independent of any burden data. | 14 |
+| Pathogen Country-Year | `ISO3` + `Year` | Genomic Country-Year joined to Burden Country-Year on ISO3 code and year. This is the integrated dataset used to compare genomic representation with reported (OpenDengue) and modelled (GBD) burden. | 15 |
+| Period-Matched Inventory | `ISO3` + `Year` | Inventory restricted to the time window covered by the burden data, so that genomic and burden measures are compared over the same period. | 16 |
 
-1. **Historical isolate-overlap diagnostics:** an earlier diagnostic of isolate overlap between archives. [TO FILL: definition and count]
-2. **Final source-key archive representation:** classification of each final source-level observation as ENA-only, NCBI-only or both. [TO FILL: counts]
+These datasets describe sequencing and submission effort relative to burden. They do not estimate infections, patients or transmission events.
 
-Figures from these two constructs are different quantities and should not be compared directly.
+**Reporting outputs**
 
-## What this framework does not estimate
+- Tables
+- Figures
+- Validation Workbook
 
-- infections
-- patients
-- transmission events
-- incidence from genomic records
+## 8. Documentation
 
-## Workflow
-
-Scripts are intended to be run sequentially, **01 through 16**. There is no Makefile or master runner.
-
-| Scripts | Stage |
+| Document | Contents |
 |---|---|
-| 01-06 | Metadata harmonization: standardization, country and host lookup, date parsing, taxonomy assignment, record classification |
-| 07-09 | Inventory construction: archive, sequence, source inventories; archive representation |
-| 10-13 | Burden harmonization: OpenDengue, GBD, burden master, burden country-year |
-| 14-16 | Country-year framework: genomic country-year, pathogen country-year, period-matched inventory |
+| `docs/01_pipeline_and_methods.md` | Methods, counting units and analytical decisions |
+| `docs/02_outputs_index.md` | Script-to-output mapping |
 
-## Repository structure
+## 9. Reproducibility
 
-```
-README.md
-docs/
-    01_pipeline_and_methods.md
-    02_outputs_index.md
-scripts/
-    pipeline/
-    qc/
-    reporting/
-    figures/
-data/
-    intermediate/
-    standardized/
-outputs/
-    tables/
-    figures/
-    figure_csvs/
-```
+- **Genomic archive extraction date:** 17 November 2026. Archive contents change continuously, so later pulls will differ.
+- Scripts are intended to be executed sequentially. There is no Makefile or master runner.
+- **Language:** R >= 4.3. The genomic metadata download step is the only non-R component.
+- **Packages:** tidyverse, readr, dplyr, tidyr, stringr, lubridate, ggplot2, sf, rnaturalearth, leaflet, openxlsx, ggrepel, viridis, webshot2
+- **Dependency management:** package versions were managed in a local R environment. No `renv` lockfile is included in the current release.
+- **Resources:** roughly 15–30 minutes and under 8 GB RAM for a full dengue run on a modern laptop (an estimate, not a benchmark).
 
-## Outputs
-
-9 main tables, 5 supplementary tables, 7 figures. See `docs/02_outputs_index.md` for the script-to-output mapping and `docs/01_pipeline_and_methods.md` for methods and analytical decisions.
-
-## Requirements
-
-- **Language:** R >= 4.3 (genomic metadata download step is the only non-R component: [TO FILL: tool/language])
-- **Packages:** tidyverse, readr, dplyr, tidyr, stringr, lubridate, ggplot2, sf, rnaturalearth, leaflet, openxlsx, ggrepel, viridis
-- **Reproducibility note:** package versions were managed within a local R environment. No `renv` lockfile is included in the current release.
-- **Approximate resources:** roughly 15-30 minutes and under 8 GB RAM for a full dengue run on a modern laptop (estimate, not a benchmark).
-
-## Data access and redistribution
-
-- **Genomic archives** (ENA Sequence, ENA SRA, NCBI Virus) are retrieved by pipeline scripts.
-- **OpenDengue and GBD** were manually downloaded from their distribution portals and then processed in the burden harmonization workflow.
-- Because source datasets come from external repositories with independent licensing and update policies, this repository distributes code and processed outputs rather than redistributing all raw source data. Users should check the terms of each source, in particular GBD/IHME, before reuse.
-
-## Burden data: reported vs modelled
-
-OpenDengue represents **reported** surveillance counts; GBD represents **modelled** estimates. They are kept as separate sources and are not interchangeable.
-
-## Status
-
-| Component | Status |
-|---|---|
-| Pipeline | Complete |
-| Inventories | Complete |
-| Burden integration | Complete |
-| Country-year linkage | Complete |
-| Descriptive analyses | Complete |
-
-
-
+---
