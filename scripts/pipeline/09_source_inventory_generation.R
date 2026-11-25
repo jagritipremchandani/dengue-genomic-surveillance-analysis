@@ -32,7 +32,7 @@
 #
 #   ena_seq_classified.csv
 #   ncbi_virus_classified.csv
-#   cross_archive_overlap_inventory.csv
+#   source_archive_overlap_inventory.csv
 #
 # OUTPUT
 #
@@ -53,7 +53,7 @@ inventory_dir <- "data/intermediate/inventories"
 
 overlap_file <- file.path(
   inventory_dir,
-  "cross_archive_overlap_inventory.csv"
+  "source_key_overlap_inventory.csv"
 )
 
 output_file <- file.path(
@@ -199,7 +199,7 @@ ncbi <- ncbi %>%
 # ==========================================================
 
 # ----------------------------------------------------------
-# archive_status originates from the cross-archive overlap
+# archive_status originates from the source-key-archive overlap
 # inventory and is retained as descriptive metadata.
 #
 # archive_status:
