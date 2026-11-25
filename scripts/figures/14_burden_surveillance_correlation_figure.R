@@ -1154,7 +1154,7 @@ saveWidget(
   
   file = out_html,
   
-  selfcontained = TRUE,
+  selfcontained = FALSE,
   
   title = "Dengue Burden vs Genomic Surveillance"
   
