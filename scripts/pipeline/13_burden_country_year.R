@@ -6,12 +6,12 @@
 # ==========================================================
 
 library(tidyverse)
-
+burden_master_dir <- "data/intermediate/burden"
 burden_dir <- "data/processed"
 
 burden_master <- read_csv(
   file.path(
-    burden_dir,
+    burden_master_dir,
     "burden_master.csv"
   ),
   show_col_types = FALSE
