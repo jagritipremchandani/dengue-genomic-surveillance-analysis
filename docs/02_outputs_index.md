@@ -65,9 +65,8 @@ This document maps pipeline scripts to analytical outputs, reporting tables, and
 | Table 05 | `table_05_taxonomy_distribution.csv` | Serotype distribution |
 | Table 06 | `table_06_record_class_distribution.csv` | Record-class distribution |
 | Table 07 | `table_07_sequence_redundancy.csv` | Sequence redundancy diagnostics |
-| Table 08 | `table_08_source_key_archive_representation.csv` | Archive representation of source-level observations |
-| Table 09 | `table_09_inventory_comparison.csv` | Inventory comparison across archive, sequence, and source inventories |
-| Table 10 | `table_10_linkage_coverage.csv` | Country-year burden linkage coverage |
+| Table 08 | `table_09_inventory_comparison.csv` | Inventory comparison across archive, sequence, and source inventories |
+| Table 9 | `table_10_linkage_coverage.csv` | Country-year burden linkage coverage |
 
 ---
 
@@ -75,10 +74,11 @@ This document maps pipeline scripts to analytical outputs, reporting tables, and
 
 | Table | Output | Purpose |
 |---|---|---|
-| Table S1 | `table_S1_source_key_hierarchy.csv` | Source-key construction hierarchy |
-| Table S2 | `table_S2_burden_source_coverage.csv` | Burden dataset coverage by source |
-| Table S3 | `table_S3_burden_measure_coverage.csv` | Burden measure coverage |
-| Table S4 | `table_S4_record_class_representation.csv` | Record-class representation among shared source observations |
+| Table S1 | `table_S1_source_key_archive_representation` | Archive Distribution of Sources |
+| Table S2 | `table_S2_source_key_hierarchy.csv` | Source-key construction hierarchy |
+| Table S3 | `table_S3_burden_source_coverage.csv` | Burden dataset coverage by source |
+| Table S4 | `table_S4_burden_measure_coverage.csv` | Burden measure coverage |
+| Table S5 | `table_S5_record_class_representation.csv` | Record-class representation among shared source observations |
 
 > **Note:** Table S1 was retired after overlap methodology revisions. Archive representation is now reported directly in Table 08.
 
@@ -88,11 +88,13 @@ This document maps pipeline scripts to analytical outputs, reporting tables, and
 
 | Figure | Title | Question | Dataset | Metric | Visualization |
 |---|---|---|---|---|---|
-| A1 | Global Distribution of Dengue Genomic Surveillance Sources | Where is dengue genomic surveillance represented? | `global_sequencing_representation.csv` | `n_sources` | Interactive bubble map and publication bubble map |
-| A2 | Global Persistence of Dengue Genomic Surveillance | Which countries sustain genomic surveillance through time? | `surveillance_persistence.csv` | `years_represented` | Country-level choropleth or persistence map |
-| A3.1 | Temporal Growth of Dengue Genomic Surveillance | Has dengue genomic surveillance increased through time? | `temporal_surveillance_growth.csv` | `n_sources` per year | Line plot |
-| A3.3 | Temporal Trends in Dengue Genomic Surveillance by Serotype | How has genomic surveillance evolved across dengue serotypes? | `temporal_surveillance_growth_by_serotype.csv` | `n_sources` per year by serotype | Multi-line serotype trend plot |
-| A5 | Burden vs Genomic Surveillance Representation | Do higher-burden country-years receive greater genomic surveillance representation? | `burden_surveillance_correlation.csv` | Cases, incidence, deaths, DALYs | Scatterplots with Spearman correlations |
+| 01 | Global Distribution of Dengue Genomic Surveillance Sources | Where is dengue genomic surveillance represented? | `global_sequencing_representation.csv` | `n_sources` | Interactive bubble map and publication bubble map |
+| 02 | Global Persistence of Dengue Genomic Surveillance | Which countries sustain genomic surveillance through time? | `surveillance_persistence.csv` | `years_represented` | Country-level choropleth or persistence map |
+| 03A | Temporal Growth of Dengue Genomic Surveillance | Has dengue genomic surveillance increased through time? | `temporal_surveillance_growth.csv` | `n_sources` per year | Line plot |
+| 03B| Temporal Trends in Dengue Genomic Surveillance by Serotype 1905-2005 | How has genomic surveillance evolved across dengue serotypes? | `temporal_surveillance_growth_by_serotype.csv` | `n_sources` per year by serotype | Multi-line serotype trend plot |
+| 03C| Temporal Trends in Dengue Genomic Surveillance by Serotype 2005-2025 | How has genomic surveillance evolved across dengue serotypes? | `temporal_surveillance_growth_by_serotype.csv` | `n_sources` per year by serotype | Multi-line serotype trend plot |
+| 05 | Burden vs Genomic Surveillance Representation | Do higher-burden country-years receive greater genomic surveillance representation? | `burden_surveillance_correlation.csv` | Cases, incidence, deaths, DALYs | Scatterplots with Spearman correlations |
+| 06 | Repository Representation | To what extent are source-level dengue genomic observations represented in both ENA and NCBI versus a single archive? | source_archive_overlap_inventory.csv | archive_status | Horizontal Bar Chart|
 
 ---
 
