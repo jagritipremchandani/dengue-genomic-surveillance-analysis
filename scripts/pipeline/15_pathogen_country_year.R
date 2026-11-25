@@ -50,7 +50,7 @@ write_csv(
   pathogen_country_year,
   
   file.path(
-    burden_dir,
+    country_dir,
     "pathogen_country_year.csv"
   )
   
