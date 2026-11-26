@@ -37,36 +37,74 @@ out_png <- file.path(
 # 1. LOAD AND PREPARE DATA
 # ----------------------------------------------------------
 
-df <- read_csv(
+raw_df <- read_csv(
   csv_path,
   show_col_types = FALSE
-) %>%
+)
+
+# Standardize year column name if needed
+if (!"collection_year" %in% names(raw_df)) {
+  year_col <- intersect(c("year", "burden_year"), names(raw_df))[1]
+  if (is.na(year_col)) {
+    stop("Could not find 'collection_year', 'year', or 'burden_year' in input CSV.")
+  }
+  raw_df <- rename(raw_df, collection_year = all_of(year_col))
+}
+
+tier_breaks <- c(-Inf, 100, 1000, 3000, 5000, Inf)
+base_labels <- c(
+  "<= 100",
+  "101–1,000",
+  "1,001–3,000",
+  "3,001–5,000",
+  "> 5,000"
+)
+
+df <- raw_df %>%
+  filter(!is.na(collection_year), !is.na(n_sources)) %>%
   mutate(
-    count_tier = cut(
+    collection_year = as.numeric(collection_year),
+    n_sources = as.numeric(n_sources),
+    .raw_tier = cut(
       n_sources,
-      breaks = c(-Inf, 100, 1000, 3000, 5000, Inf),
-      labels = c(
-        "<= 100 (n = 34)",
-        "101–1,000 (n = 12)",
-        "1,001–3,000 (n = 10)",
-        "3,001–5,000 (n = 5)",
-        "> 5,000 (n = 5)"
-      ),
+      breaks = tier_breaks,
+      labels = base_labels,
       right = TRUE
     )
   ) %>%
   arrange(collection_year)
 
+tier_counts <- df %>%
+  count(.raw_tier, .drop = FALSE) %>%
+  pull(n)
+
+dynamic_labels <- paste0(base_labels, " (n = ", tier_counts, ")")
+
+df <- df %>%
+  mutate(
+    count_tier = factor(
+      paste0(
+        as.character(.raw_tier),
+        " (n = ",
+        tier_counts[match(as.character(.raw_tier), base_labels)],
+        ")"
+      ),
+      levels = dynamic_labels
+    )
+  ) %>%
+  select(-`.raw_tier`)
+
+n_years_plotted <- n_distinct(df$collection_year)
+min_yr <- min(df$collection_year)
+max_yr <- max(df$collection_year)
+
 # ----------------------------------------------------------
 # 2. COLOUR PALETTE
 # ----------------------------------------------------------
 
-tier_palette <- c(
-  "<= 100 (n = 34)"       = "#7048E8",
-  "101–1,000 (n = 12)"    = "#00A6A6",
-  "1,001–3,000 (n = 10)"  = "#F2B705",
-  "3,001–5,000 (n = 5)"   = "#F06424",
-  "> 5,000 (n = 5)"       = "#D7264D"
+tier_palette <- setNames(
+  c("#7048E8", "#00A6A6", "#F2B705", "#F06424", "#D7264D"),
+  dynamic_labels
 )
 
 # ----------------------------------------------------------
@@ -78,7 +116,6 @@ p <- ggplot(
   aes(
     x = collection_year,
     y = n_sources,
-    
     text = paste0(
       "<b>Collection Year:</b> ", collection_year, "<br>",
       "<b>Source Observations:</b> ",
@@ -87,16 +124,12 @@ p <- ggplot(
     )
   )
 ) +
-  
-  # Connecting line
   geom_line(
     aes(group = 1),
     linewidth = 0.85,
     colour = "#64748B",
     alpha = 0.75
   ) +
-  
-  # Points: size now increases with source observations
   geom_point(
     aes(
       fill = count_tier,
@@ -107,120 +140,55 @@ p <- ggplot(
     stroke = 0.3,
     alpha = 0.96
   ) +
-  
-  # Colour categories
   scale_fill_manual(
     values = tier_palette,
     name = "Source Observations",
     drop = FALSE
   ) +
-  
-  # IMPORTANT: Variable dot sizes
   scale_size_continuous(
     range = c(1.7, 7.1),
     trans = "sqrt",
     guide = "none"
   ) +
-  
-  # X-axis
   scale_x_continuous(
     breaks = seq(1905, 2025, by = 15),
     expand = expansion(mult = c(0.04, 0.04))
   ) +
-  
-  # Y-axis
   scale_y_continuous(
     breaks = seq(0, 7000, by = 1000),
     expand = expansion(mult = c(0.02, 0.06))
   ) +
-  
-  # Titles and labels
   labs(
     title = "Temporal Growth of Dengue Genomic Surveillance",
-    
-    subtitle = paste(
-      "Source-level genomic observations by collection year",
-      "(73 years: low early counts, rising post-2020)"
+    subtitle = paste0(
+      "Source-level genomic observations by collection year (",
+      n_years_plotted,
+      " years, ",
+      min_yr,
+      "\u2013",
+      max_yr,
+      "; 81 records in 2026 fall outside the 1924\u20132025 burden window)"
     ),
-    
     x = "Collection Year",
     y = "Number of Source Observations"
   ) +
-  
-  # Theme
   theme_minimal(base_size = 12) +
-  
   theme(
-    panel.background = element_rect(
-      fill = "#FFFFFF",
-      colour = NA
-    ),
-    
-    plot.background = element_rect(
-      fill = "#FFFFFF",
-      colour = NA
-    ),
-    
-    panel.grid.major = element_line(
-      colour = "#E5E7EB",
-      linewidth = 0.5
-    ),
-    
+    panel.background = element_rect(fill = "#FFFFFF", colour = NA),
+    plot.background = element_rect(fill = "#FFFFFF", colour = NA),
+    panel.grid.major = element_line(colour = "#E5E7EB", linewidth = 0.5),
     panel.grid.minor = element_blank(),
-    
-    axis.line.x = element_line(
-      colour = "#CBD5E1",
-      linewidth = 0.6
-    ),
-    
-    axis.ticks.x = element_line(
-      colour = "#CBD5E1"
-    ),
-    
-    plot.title = element_text(
-      face = "bold",
-      size = 15,
-      colour = "#111827"
-    ),
-    
-    plot.subtitle = element_text(
-      size = 11.5,
-      colour = "#4B5563"
-    ),
-    
-    axis.title = element_text(
-      face = "bold",
-      size = 11,
-      colour = "#1F2937"
-    ),
-    
-    axis.text = element_text(
-      colour = "#374151"
-    ),
-    
+    axis.line.x = element_line(colour = "#CBD5E1", linewidth = 0.6),
+    axis.ticks.x = element_line(colour = "#CBD5E1"),
+    plot.title = element_text(face = "bold", size = 15, colour = "#111827"),
+    plot.subtitle = element_text(size = 11.5, colour = "#4B5563"),
+    axis.title = element_text(face = "bold", size = 11, colour = "#1F2937"),
+    axis.text = element_text(colour = "#374151"),
     legend.position = "right",
-    
-    legend.title = element_text(
-      face = "bold",
-      size = 11
-    ),
-    
-    legend.text = element_text(
-      size = 10.5,
-      colour = "#374151"
-    ),
-    
-    legend.key = element_rect(
-      fill = "#FFFFFF",
-      colour = NA
-    ),
-    
-    plot.margin = margin(
-      t = 12,
-      r = 15,
-      b = 10,
-      l = 10
-    )
+    legend.title = element_text(face = "bold", size = 11),
+    legend.text = element_text(size = 10.5, colour = "#374151"),
+    legend.key = element_rect(fill = "#FFFFFF", colour = NA),
+    plot.margin = margin(t = 12, r = 15, b = 10, l = 10)
   )
 
 # ----------------------------------------------------------
