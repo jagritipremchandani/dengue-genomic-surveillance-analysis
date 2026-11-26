@@ -21,7 +21,7 @@
 # This script DOES NOT generate the source inventory.
 # Source inventory creation occurs separately in:
 #
-#     08_source_inventory_generation.R
+#     09_source_inventory_generation.R
 #
 # ==========================================================
 
