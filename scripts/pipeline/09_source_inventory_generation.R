@@ -32,7 +32,7 @@
 #
 #   ena_seq_classified.csv
 #   ncbi_virus_classified.csv
-#   source_archive_overlap_inventory.csv
+#   source_key_archive_overlap_inventory.csv
 #
 # OUTPUT
 #
